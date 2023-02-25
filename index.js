@@ -8,8 +8,8 @@ const port = process.env.PORT || 7074
 
 app.use(cors());
 
-const categories = JSON.parse(fs.readFileSync('./data/categories.json'));
-const items = JSON.parse(fs.readFileSync('./data/products.json'));
+const categories = JSON.parse(fs.readFileSync('/data/categories.json'));
+const items = JSON.parse(fs.readFileSync('/data/products.json'));
 const topSaleIds = [66, 65, 73];
 const moreCount = 6;
 
