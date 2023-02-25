@@ -4,7 +4,7 @@ const cors = require("cors")
 
 const app = express()
 
-const port = process.env.PORT || 7073
+const port = process.env.PORT || 7074
 
 app.use(cors());
 
@@ -37,12 +37,13 @@ const fortune = (res, body = null, status = 200) => {
                 return;
             }
 
-            res.status = status;
-            res.send = body;
+            res.status(status);
+            res.send(body);
             resolve();
         }, delay);
     })
 }
+
 
 app.get('/api/top-sales', (req, res) => {
 	return fortune(res, items.filter(o => topSaleIds.includes(o.id)).map(itemBasicMapper));
@@ -69,7 +70,7 @@ app.get('/api/items', async (req, res) => {
 });
 
 app.get('/api/items/:id',  (req, res) => {
-	const id = req.params.id;
+	const id = Number(req.params.id);
 	const item = items.find(o => o.id === id);
 	if (item === undefined) {
 			return fortune(res, 'Not found', 404);
