@@ -53,6 +53,10 @@ app.use(koaBody({
 
 const router = new Router();
 
+router.get('/', async (ctx) => {
+	ctx.body = 'Hello World!';
+})
+
 router.get('/api/top-sales', async (ctx, next) => {
     return fortune(ctx, items.filter(o => topSaleIds.includes(o.id)).map(itemBasicMapper));
 });
