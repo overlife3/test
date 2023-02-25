@@ -11,6 +11,6 @@ app.get('/api', (req, res) => {
 	res.send('hello')
 })
 
-app.listen(9000, () => {
+app.listen(process.port || port, () => {
 	console.log(`starting server on port: ${port}`)
 })
